@@ -2,24 +2,91 @@
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("button").click(function () {
-                $.post("https://jsonplaceholder.typicode.com/users", { name: "meet", username: "Meet Parkhiya" }, function (data, status) {
-                    console.log(data);
-                });
-            });
-        });
-    </script>
+
 </head>
 
 <body>
 
-    <button>Click</button>
+    <textarea name="" id="textarea" cols="80" rows="20">
+        Lorem ipsum dolor ff sit amet consectetur adipisicing elit. Consequatur deserunt exercitationem nemo dignissimos aspernatur maiores facere ab perferendis accusantium deleniti sed esse corrupti cumque rem! Eum facere dolorum itaque vitae?
+    </textarea><br><br><br>
+    <span id="countnumber"></span><br>
+    <button id="count">Count</button>
+
+    <button id="removespace">Remove Space</button>
+
+    <button id="capital">Capital</button>
+
+    <button id="small">Small</button>
+
+    <button id="font-famaliy">Font - Family</button>
+    <br><br><br><br><span id="sentancescount"></span><br>
+    <button id="sentances">Sentances</button>
+
+    <br><br><span id="wordnumber"></span>
+    <br>
+    <button id="word-count">Word-count</button><br><br>
+    <span id="spacenumber"></span><br>
+    <button id="space-count">Space-count</button>
+
+
+
+
     <table>
 
     </table>
+
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#count").click(function () {
+                let textcount = $("#textarea").val().trim().length;
+                document.getElementById("countnumber").innerHTML = textcount;
+            });
+            $("#removespace").click(function () {
+                let space = $("#textarea").val()
+                let newspace = space.trim();
+                console.log(newspace, "ss");
+                document.getElementById("textarea").innerHTML = "";
+                document.getElementById("textarea").innerHTML = newspace;
+            });
+            $("#capital").click(function () {
+                document.getElementById("textarea").innerHTML = "";
+                let capital = $("#textarea").val();
+                let capitaled = capital.toUpperCase();
+                document.getElementById("textarea").innerHTML = capitaled;
+            });
+            $("#small").click(function () {
+                let small = $("#textarea").val().toLocaleLowerCase();
+                document.getElementById("textarea").innerHTML = "";
+                document.getElementById("textarea").innerHTML = small;
+            });
+
+            $("#word-count").click(function () {
+                var word = $.trim($("#textarea").val());
+                var words = word.split(" ");
+                document.getElementById("wordnumber").innerHTML = words.length;
+            });
+
+            $("#space-count").click(function () {
+                var spaces = $("#textarea").val();
+                var spaces1 = spaces.split(" ").length - 1;
+                document.getElementById("spacenumber").innerHTML = spaces1;
+            });
+
+            $("#font-famaliy").click(function () {
+                var fontfamaliy = $("#textarea").css("font-family", "oswald");
+            });
+
+            $("#sentances").click(function () {
+                var sentances = $("#textarea").val();
+                let sentancess = sentances.split(/\.+[\n|\s]/g).length;
+                document.getElementById("sentancescount").innerHTML = sentancess;
+            });
+
+        })
+    </script>
+
 
 </body>
 
